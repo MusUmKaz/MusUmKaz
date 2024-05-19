@@ -273,4 +273,3 @@ b,iota :=IsIsomorphic(E,E1);
 b;
 iota;
 IsInvertible(iota);
-
