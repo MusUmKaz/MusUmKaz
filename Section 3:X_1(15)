@@ -1,0 +1,19 @@
+X_1(15)
+
+R<x>:=PolynomialRing(Rationals());
+f:=;
+K<a>:= NumberField(f);
+E := EllipticCurve([K |1, 1, 1, 0, 0]);
+TorsionSubgroup(E);
+Rank(E);
+G, h := TorsionSubgroup(E);
+torsion_pts_E := [ h(g) : g in G ];
+torsion_pts_E;
+
+K<x>:=PolynomialRing(Rationals());
+F<a>:=NumberField();
+t:=;
+s:=;
+E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+E;
+TorsionSubgroup(E);
