@@ -1,0 +1,186 @@
+In the following batch of codes for X_1(11): We first find points of X_1(11) over the given number field. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (11). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field.
+
+> R<x>:=PolynomialRing(Rationals());
+> f:=x^3-x^2+x+1;
+> K<a>:= NumberField(f);
+> E := EllipticCurve([K |0, -1, -1, 0, 0]);
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/10
+Defined on 1 generator
+Relations:
+    10*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/10
+Defined on 1 generator
+Relations:
+    10*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+> Rank(E);
+0 true
+> G, h := TorsionSubgroup(E);
+> torsion_pts_E := [ h(g) : g in G ];
+> torsion_pts_E;
+[ (0 : 1 : 0), (a^2 - a + 2 : a^2 - 2*a + 3 : 1), (1 : 1 : 1), (-a : a^2 - a :1), (0 : 1 : 1), (1/2*(-a^2 + a) : 1/2 : 1), (0 : 0 : 1), (-a : -a^2 + a + 1: 1), (1 : 0 : 1), (a^2 - a + 2 : -a^2 + 2*a - 2 : 1) ]
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2+x+1);
+> t:=a^2 - a + 2 ;
+> s:= a^2 - 2*a + 3;
+> E:=EllipticCurve([F|(s*t + t - s^2),s*(s - 1)*(s - t)*t, t^2*s*(s - 1)*(s - \
+t),0,0]);
+> E;
+Elliptic Curve defined by y^2 + (-a^2 + 3*a - 2)*x*y + (62*a^2 - 96*a + 114)*y =
+x^3 + (22*a^2 - 34*a + 40)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2+x+1);
+> t:=-a ;
+> s:= a^2 - a;
+> E:=EllipticCurve([F|(s*t + t - s^2),s*(s - 1)*(s - t)*t, t^2*s*(s - 1)*(s - \
+t),0,0]);
+> E;
+Elliptic Curve defined by y^2 + a^2*x*y + (4*a^2 - 7*a - 5)*y = x^3 + (-5*a^2 +
+    a + 2)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2+x+1);
+> t:=1/2*(-a^2 + a) ;
+> s:=1/2;
+> E:=EllipticCurve([F|(s*t + t - s^2),s*(s - 1)*(s - t)*t, t^2*s*(s - 1)*(s - \
+t),0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/4*(-3*a^2 + 3*a - 1)*x*y + 1/32*(-a^2 - 1)*y =
+x^3 + 1/16*(-a + 1)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2+x+1);
+> t:=-a;
+> s:= -a^2 + a + 1;
+> E:=EllipticCurve([F|(s*t + t - s^2),s*(s - 1)*(s - t)*t, t^2*s*(s - 1)*(s - \
+t),0,0]);
+> E;
+Elliptic Curve defined by y^2 + (3*a^2 - 5*a - 3)*x*y + (8*a^2 + 8*a + 2)*y =
+x^3 + (2*a^2 - 10*a - 6)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2+x+1);
+> t:=a^2 - a + 2 ;
+> s:=  -a^2 + 2*a - 2;
+> E:=EllipticCurve([F|(s*t + t - s^2),s*(s - 1)*(s - t)*t, t^2*s*(s - 1)*(s - \
+t),0,0]);
+> E;
+Elliptic Curve defined by y^2 + (-6*a^2 + 10*a - 11)*x*y + (-250*a^2 + 386*a -
+    460)*y = x^3 + (-88*a^2 + 136*a - 162)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/11
+Defined on 1 generator
+Relations:
+    11*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2+x+1);
+> E1:=EllipticCurve([F |(-a^2 + 3*a - 2),(22*a^2 - 34*a + 40),(62*a^2 - 96*a +\
+ 114), 0, 0]);
+> E2:=EllipticCurve([F |a^2,(-5*a^2 +a + 2),(4*a^2 - 7*a - 5) ,0,0]);
+> E3:=EllipticCurve([F | 1/4*(-3*a^2 + 3*a - 1),1/16*(-a + 1),1/32*(-a^2 - 1),\
+0,0]);
+> E4:=EllipticCurve([F | (3*a^2 - 5*a - 3),(2*a^2 - 10*a - 6),(8*a^2 + 8*a + 2\
+),0,0]);
+> E5:=EllipticCurve([F | (-6*a^2 + 10*a - 11),(-88*a^2 + 136*a - 162),(-250*a^\
+2 + 386*a -460),0,0]);
+> IsIsomorphic(E1,E2);
+true
+> IsIsomorphic(E1,E3);
+true
+> IsIsomorphic(E3,E2);
+true
+> IsIsomorphic(E1,E4);
+true
+> IsIsomorphic(E4,E2);
+true
+> IsIsomorphic(E3,E4);
+true
+> IsIsomorphic(E1,E5);
+true
+> IsIsomorphic(E2,E5);
+true
+> IsIsomorphic(E3,E5);
+true
+> IsIsomorphic(E4,E5);
+true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+R<x>:=PolynomialRing(Rationals());
+f:=;
+K<a>:= NumberField(f);
+E := EllipticCurve([K |0, -1, -1, 0, 0]);
+TorsionSubgroup(E);
+Rank(E);
+G, h := TorsionSubgroup(E);
+torsion_pts_E := [ h(g) : g in G ];
+torsion_pts_E;
+
+
+K<x>:=PolynomialRing(Rationals());
+F<a>:=NumberField();
+t:=;
+s:=;
+E:=EllipticCurve([F|(s*t + t - s^2),s*(s - 1)*(s - t)*t, t^2*s*(s - 1)*(s - t),0,0]);
+E;
+TorsionSubgroup(E);
