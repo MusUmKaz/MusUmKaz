@@ -1,0 +1,44 @@
+Map between X_1(3,9)(in the website of Prof. Andrew Sutherland) and 27a3
+
+R<u,v> := PolynomialRing(Rationals(),2);
+X := 3*v^3 + (3*u^3 + 9*u^2)*v^2 + (u^6 + 6*u^5 + 9*u^4)*v + 4*u^6 +33*u^5 + 108*u^4 + 186*u^3 + 189*u^2 + 108*u + 27;
+Rxyz<x,y,z>:=PolynomialRing(Rationals(),3);
+P2 := ProjectiveSpace(Rxyz);
+C := Curve(P2,Numerator(z^7*Evaluate(X,[x/z,y/z])));
+E,phi := EllipticCurve(C,Places(C![1,0,0])[1]);
+E;
+IsInvertible(phi);
+E1 := EllipticCurve([0, 0, 1, 0, 0]);
+b,iota :=IsIsomorphic(E,E1);
+b;
+iota;
+IsInvertible(iota);
+
+X_1(3,9)
+
+R<x>:=PolynomialRing(Rationals());
+f:=;
+K<a>:= NumberField(f);
+E := EllipticCurve([K |0, 0, 1, 0, 0]);
+TorsionSubgroup(E);
+Rank(E);
+G, h := TorsionSubgroup(E);
+torsion_pts_E := [ h(g) : g in G ];
+torsion_pts_E;
+
+K<x>:=PolynomialRing(Rationals());
+F<a>:=NumberField();
+k:=;
+l:=;
+x:=9*k + 9 ;
+y:= 27*l + 54 ;
+z:=1;
+U:=1/9*x^3*y^3 - 45/2*x^3*y^2*z - 8/3*x^2*y^3*z - 1/9*y^5*z + 648*x^3*y*z^2 + 567*x^2*y^2*z^2 + 27*x*y^3*z^2 + 63/2*y^4*z^2 - 13851*x^2*y*z^3 - 11421/2*x*y^2*z^3 -5427/2*y^3*z^3 - 118098*x^2*z^4 + 373977/2*x*y*z^4 + 91854*y^2*z^4 - 531441/2*x*z^5 - 1062882*y*z^5;
+V:=-162*x^2*y^2*z^2 - 27*x*y^3*z^2 - 4*y^4*z^2 +13122*x^2*y*z^3 + 9477/2*x*y^2*z^3 + 324*y^3*z^3 -236196*x^2*z^4 - 216513*x*y*z^4 - 10935*y^2*z^4 +2657205*x*z^5 + 14348907/2*z^6;
+W:=y^4*z^2 - 405/2*y^3*z^3 - 59049/2*x*y*z^4 + 45927/2*y^2*z^4 +1062882*x*z^5 - 708588*y*z^5 + 4782969/2*z^6;
+u:=U/W;
+v:=V/W;
+t := (u+1)/(u+2);
+E:=EllipticCurve([F|-(t^3-t^2-1),-t^2*(t-1)*(t^2-t+1),-t^2*(t-1)*(t^2-t+1),0,0]);
+E;
+TorsionSubgroup(E);
