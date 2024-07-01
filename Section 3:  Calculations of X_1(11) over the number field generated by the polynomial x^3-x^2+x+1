@@ -1,8 +1,8 @@
-In the following batch of codes for X_1(11): We first find points of X_1(11) over the given number field. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (11). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field.
+In the following batch of codes for X_1(11): We first find points of X_1(11) over the given number field F. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (11). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field F.
 
 > R<x>:=PolynomialRing(Rationals());
 > f:=x^3-x^2+x+1;
-> K<a>:= NumberField(f);
+> F<a>:= NumberField(f);
 > E := EllipticCurve([K |0, -1, -1, 0, 0]);
 > TorsionSubgroup(E);
 Abelian Group isomorphic to Z/10
