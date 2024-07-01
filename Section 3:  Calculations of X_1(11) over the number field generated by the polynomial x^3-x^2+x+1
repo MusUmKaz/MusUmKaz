@@ -3,7 +3,7 @@ In the following batch of codes for X_1(11): We first find points of X_1(11) ove
 > R<x>:=PolynomialRing(Rationals());
 > f:=x^3-x^2+x+1;
 > F<a>:= NumberField(f);
-> E := EllipticCurve([K |0, -1, -1, 0, 0]);
+> E := EllipticCurve([F |0, -1, -1, 0, 0]);
 > TorsionSubgroup(E);
 Abelian Group isomorphic to Z/10
 Defined on 1 generator
