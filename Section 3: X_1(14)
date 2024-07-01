@@ -1,3 +1,21 @@
+Map between X_1(14)(in the website of Prof. Andrew Sutherland) and 14a5
+ 
+K<a>:= NumberField(f);
+R<u,v> := PolynomialRing(Rationals(),2);
+X:=v^2 + (u^2 + u)*v + u;
+Rxyz<x,y,z>:=PolynomialRing(Rationals(),3);
+P2 := ProjectiveSpace(Rxyz);
+C := Curve(P2,z*y^2 + (x^2 + z*x)*y + x*z^2);
+E,phi := EllipticCurve(C,Places(C![1,0,0])[1]);
+E;
+phi;
+IsInvertible(phi);
+E1 := EllipticCurve([1, 0, 1, -1, 0]);
+b,iota :=IsIsomorphic(E,E1);
+b;
+iota;
+IsInvertible(iota);
+
 X_1(14)
 
 R<x>:=PolynomialRing(Rationals());
