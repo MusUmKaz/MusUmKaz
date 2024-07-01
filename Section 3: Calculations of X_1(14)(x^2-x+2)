@@ -1,0 +1,2 @@
+In the following batch of codes for X_1(14): We first find points of X_1(14) over the given number field F. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (14). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field F.
+
