@@ -1,0 +1,29 @@
+X_1(14)
+
+R<x>:=PolynomialRing(Rationals());
+f:=;
+K<a>:= NumberField(f);
+E := EllipticCurve([K |1, 0, 1, -1, 0]);
+TorsionSubgroup(E);
+Rank(E);
+G, h := TorsionSubgroup(E);
+torsion_pts_E := [ h(g) : g in G ];
+torsion_pts_E;
+
+K<x>:=PolynomialRing(Rationals());
+F<a>:=NumberField();
+x:= ;
+y:=;
+X:=x;
+Y:=y+1;
+z:=1;
+U:=-X^2 - X*Y + X*z;
+V:=X*z + Y*z - z^2;
+W:=X^2;
+u:=U/W;
+v:=V/W;
+r:= 1-(u+v)/((v+1)*(u+v+1));
+s:=(1-u)/(v+1);
+E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+E;
+TorsionSubgroup(E);
