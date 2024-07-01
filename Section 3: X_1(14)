@@ -1,3 +1,5 @@
+The following code used to make connection of the codes related to X_1(14) in the website of Prof. Andrew Sutherland and their nice models.
+
 Map between X_1(14)(in the website of Prof. Andrew Sutherland) and 14a5
  
 K<a>:= NumberField(f);
