@@ -75,7 +75,7 @@ Relations:
 > R<x> := PolynomialRing(Rationals());
 > F := NumberField(x^3-2);
 > L := CyclotomicField(3);
-> S:=IsSubfield(L, K);
+> S:=IsSubfield(L, F);
 > S;
 false
 
