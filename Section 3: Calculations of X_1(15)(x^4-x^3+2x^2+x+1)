@@ -1,0 +1,365 @@
+In the following batch of codes for X_1(15): We first find points of X_1(15) over the given number field F. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (15). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field F.
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> f:=x^4-x^3+2*x^2+x+1;
+> F<a>:= NumberField(f);
+> E := EllipticCurve([F |1, 1, 1, 0, 0]);
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/2 + Z/8
+Defined on 2 generators
+Relations:
+    2*$.1 = 0
+    8*$.2 = 0
+Mapping from: Abelian Group isomorphic to Z/2 + Z/8
+Defined on 2 generators
+Relations:
+    2*$.1 = 0
+    8*$.2 = 0 to CrvEll: E given by a rule [no inverse]
+> Rank(E);
+0 true
+> G, h := TorsionSubgroup(E);
+> torsion_pts_E := [ h(g) : g in G ];
+> torsion_pts_E;
+[ (0 : 1 : 0), (1/4*(-a^3 + a^2 - 3*a - 1) : 1/8*(a^3 - a^2 + 3*a - 3) : 1),
+(1/2*(-a^3 - 1) : 1/2*(-a^3 - 1) : 1), (1/2*(a^3 - 2*a^2 + 2*a - 1) : 1/2*(-a^3
+    + 2*a^2 - 2*a + 1) : 1), (0 : 0 : 1), (-2 : -a^3 + a^2 - 3*a : 1), (1/2*(a^3
+    + 3) : -a^3 - 4 : 1), (1/2*(-a^3 + 2*a^2 - 2*a - 1) : -1 : 1), (-1 : 0 : 1),
+(1/4*(a^3 - a^2 + 3*a) : 1/8*(-a^3 + a^2 - 3*a - 4) : 1), (1/2*(a^3 + 3) :
+1/2*(a^3 + 3) : 1), (1/2*(-a^3 + 2*a^2 - 2*a - 1) : 1/2*(a^3 - 2*a^2 + 2*a + 1)
+: 1), (0 : -1 : 1), (-2 : a^3 - a^2 + 3*a + 1 : 1), (1/2*(-a^3 - 1) : a^3 : 1),
+(1/2*(a^3 - 2*a^2 + 2*a - 1) : -1 : 1) ]
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/4*(-a^3 + a^2 - 3*a - 1) ;
+> s:=1/8*(a^3 - a^2 + 3*a - 3);
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/64*(7*a^3 - 7*a^2 + 21*a + 76)*x*y +
+1/2048*(79*a^3 - 79*a^2 + 237*a + 172)*y = x^3 + 1/2048*(79*a^3 - 79*a^2 + 237*a
+    + 172)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(-a^3 - 1)  ;
+> s:= 1/2*(-a^3 - 1);
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + (-5*a^3 - 20)*x*y + (-47*a^3 - 199)*y = x^3 +
+    (-47*a^3 - 199)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(a^3 - 2*a^2 + 2*a - 1);
+> s:=  1/2*(-a^3+ 2*a^2 - 2*a + 1)  ;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+
+>> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t
+                                                                ^
+Runtime error in '/': Argument 2 is not non-zero
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=-2;
+> s:=-a^3 + a^2 - 3*a;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + (2*a^3 - 2*a^2 + 6*a + 1)*x*y + (6*a^3 - 6*a^2 +
+    18*a + 8)*y = x^3 + (6*a^3 - 6*a^2 + 18*a + 8)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(a^3+ 3);
+> s:= -a^3 - 4 ;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/2*(a^3 + 2)*x*y + 1/4*(-11*a^3 + 3)*y = x^3 +
+1/4*(-11*a^3 + 3)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(-a^3 + 2*a^2 - 2*a - 1) ;
+> s:=-1;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+
+>> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t
+                                                                ^
+Runtime error in '/': Argument 2 is not non-zero
+
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/4*(a^3 - a^2 + 3*a) ;
+> s:=1/8*(-a^3 + a^2 - 3*a - 4) ;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/64*(-7*a^3 + 7*a^2 - 21*a + 69)*x*y +
+1/2048*(-79*a^3 + 79*a^2 - 237*a + 93)*y = x^3 + 1/2048*(-79*a^3 + 79*a^2 -
+    237*a + 93)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(a^3 + 3) ;
+> s:=1/2*(a^3 + 3);
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + 5*a^3*x*y + (47*a^3 - 11)*y = x^3 + (47*a^3 -
+    11)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(-a^3 + 2*a^2 - 2*a - 1) ;
+> s:=1/2*(a^3 - 2*a^2 + 2*a + 1) ;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+
+>> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t
+                                                                ^
+Runtime error in '/': Argument 2 is not non-zero
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=-2 ;
+> s:=a^3 - a^2 + 3*a + 1;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + (-2*a^3 + 2*a^2 - 6*a - 1)*x*y + (-6*a^3 + 6*a^2
+    - 18*a + 2)*y = x^3 + (-6*a^3 + 6*a^2 - 18*a + 2)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(-a^3 - 1) ;
+> s:= a^3;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/2*(-a^3 - 2)*x*y + 1/4*(11*a^3 + 47)*y = x^3 +
+1/4*(11*a^3 + 47)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/15
+Defined on 1 generator
+Relations:
+    15*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> t:=1/2*(a^3 - 2*a^2 + 2*a - 1) ;
+> s:= -1;
+> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t+\
+1)^3) ,(t*(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),(t*\
+(t^4-2*t^2-t-1)*s+(t+1)*(t^3+3*t^2+t+1)*t^3)/((t^2+t+1)*(t+1)^6),0,0]);
+
+>> E:=EllipticCurve([F|((t^2-t)*s+(t^5+5*t^4+9*t^3+7*t^2+4*t+1))/((t^2+t+1)*(t
+                                                                ^
+Runtime error in '/': Argument 2 is not non-zero
+
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4-x^3+2*x^2+x+1);
+> E1:=EllipticCurve([F |1/64*(7*a^3 - 7*a^2 + 21*a + 76),1/2048*(79*a^3 - 79*a\
+^2 + 237*a + 172),1/2048*(79*a^3 - 79*a^2 + 237*a + 172), 0, 0]);
+> E2:=EllipticCurve([F |(-5*a^3 - 20),(-47*a^3 - 199),(-47*a^3 - 199),0,0]);
+> E3:=EllipticCurve([F |(2*a^3 - 2*a^2 + 6*a + 1),(6*a^3 - 6*a^2 + 18*a + 8),(\
+6*a^3 - 6*a^2 + 18*a + 8),0,0]);
+> E4:=EllipticCurve([F |1/2*(a^3 + 2),1/4*(-11*a^3 + 3),1/4*(-11*a^3 + 3),0,0]\
+);
+> E5:=EllipticCurve([F |1/64*(-7*a^3 + 7*a^2 - 21*a + 69),1/2048*(-79*a^3 + 79\
+*a^2 - 237*a + 93),1/2048*(-79*a^3 + 79*a^2 - 237*a + 93),0,0]);
+> E6:=EllipticCurve([F |5*a^3,(47*a^3 - 11),(47*a^3 - 11),0, 0]);
+> E7:=EllipticCurve([F |(-2*a^3 + 2*a^2 - 6*a - 1), (-6*a^3 + 6*a^2 - 18*a + 2\
+), (-6*a^3 + 6*a^2 - 18*a + 2), 0, 0]);
+> E8:=EllipticCurve([F |1/2*(-a^3 - 2),1/4*(11*a^3 + 47),1/4*(11*a^3 + 47), 0,\
+ 0]);
+>
+>
+> IsIsomorphic(E1,E2);
+false
+>
+> IsIsomorphic(E1,E3);
+true
+> IsIsomorphic(E2,E3);
+false
+>
+> IsIsomorphic(E1,E4);
+false
+> IsIsomorphic(E2,E4);
+true
+> IsIsomorphic(E3,E4);
+false
+>
+> IsIsomorphic(E1,E5);
+true
+> IsIsomorphic(E2,E5);
+false
+> IsIsomorphic(E3,E5);
+true
+> IsIsomorphic(E4,E5);
+false
+>
+>
+> IsIsomorphic(E1,E6);
+false
+> IsIsomorphic(E2,E6);
+true
+> IsIsomorphic(E3,E6);
+false
+> IsIsomorphic(E4,E6);
+true
+> IsIsomorphic(E5,E6);
+false
+>
+>
+> IsIsomorphic(E1,E7);
+true
+> IsIsomorphic(E2,E7);
+false
+> IsIsomorphic(E3,E7);
+true
+> IsIsomorphic(E4,E7);
+false
+> IsIsomorphic(E5,E7);
+true
+> IsIsomorphic(E6,E7);
+false
+>
+>
+> IsIsomorphic(E1,E8);
+false
+> IsIsomorphic(E2,E8);
+true
+> IsIsomorphic(E3,E8);
+false
+> IsIsomorphic(E4,E8);
+true
+> IsIsomorphic(E5,E8);
+false
+> IsIsomorphic(E6,E8);
+true
+> IsIsomorphic(E7,E8);
+false
+
+
+
+
+
