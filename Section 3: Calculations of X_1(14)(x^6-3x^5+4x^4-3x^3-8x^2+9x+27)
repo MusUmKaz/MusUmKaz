@@ -37,3 +37,617 @@ Taking (x : y : 1) to (x : y + 1 : 1)
 In the following batch of codes for X_1(14): We first find points of X_1(14) over the given number field F. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (14). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field F.
 
 
+
+> R<x>:=PolynomialRing(Rationals());
+> f:=x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27;
+> F<a>:= NumberField(f);
+> E := EllipticCurve([F |1, 0, 1, -1, 0]);
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/3 + Z/6
+Defined on 2 generators
+Relations:
+    3*$.1 = 0
+    6*$.2 = 0
+Mapping from: Abelian Group isomorphic to Z/3 + Z/6
+Defined on 2 generators
+Relations:
+    3*$.1 = 0
+    6*$.2 = 0 to CrvEll: E given by a rule [no inverse]
+> Rank(E);
+2 true
+> G, h := TorsionSubgroup(E);
+> torsion_pts_E := [ h(g) : g in G ];
+> torsion_pts_E;
+[ (0 : 1 : 0), (1/3*(a^2 - a) : 1/225*(-2*a^5 + 5*a^4 - 43*a^3 + 22*a^2 + 27*a -
+    117) : 1), (1/3*(a^2 - a) : 1/225*(2*a^5 - 5*a^4 + 43*a^3 - 97*a^2 + 48*a -
+    108) : 1), (1 : -2 : 1), (1/150*(-11*a^5 + 40*a^4 - 49*a^3 - 4*a^2 + 261*a -
+    456) : 1/150*(44*a^5 - 185*a^4 + 396*a^3 - 559*a^2 + 106*a + 549) : 1),
+(1/150*(11*a^5 - 15*a^4 - a^3 - 21*a^2 - 211*a - 219) : 1/150*(-44*a^5 + 35*a^4
+    - 96*a^3 - 41*a^2 + 344*a + 351) : 1), (0 : -1 : 1), (1/75*(4*a^5 - 10*a^4 +
+    11*a^3 - 19*a^2 - 29*a + 9) : 1/675*(-43*a^5 + 95*a^4 - 212*a^3 + 223*a^2 +
+    243*a - 378) : 1), (1/75*(-4*a^5 + 10*a^4 - 11*a^3 - 6*a^2 + 54*a - 34) :
+1/675*(43*a^5 - 120*a^4 + 262*a^3 - 273*a^2 - 218*a - 72) : 1), (-1 : 0 : 1),
+(1/6*(-a^4 + 2*a^3 + a^2 - 2*a - 3) : 1/150*(-21*a^5 + 65*a^4 + 11*a^3 - 119*a^2
+    - 29*a + 9) : 1), (1/6*(-a^4 + 2*a^3 + a^2 - 2*a - 3) : 1/150*(21*a^5 -
+    40*a^4 - 61*a^3 + 94*a^2 + 79*a - 84) : 1), (0 : 0 : 1), (1/75*(-4*a^5 +
+    10*a^4 - 11*a^3 - 6*a^2 + 54*a - 34) : 1/675*(-7*a^5 + 30*a^4 - 163*a^3 +
+    327*a^2 - 268*a - 297) : 1), (1/75*(4*a^5 - 10*a^4 + 11*a^3 - 19*a^2 - 29*a
+    + 9) : 1/675*(7*a^5 - 5*a^4 + 113*a^3 - 52*a^2 + 18*a - 378) : 1), (1 : 0 :
+1), (1/150*(11*a^5 - 15*a^4 - a^3 - 21*a^2 - 211*a - 219) : 1/150*(33*a^5 -
+    20*a^4 + 97*a^3 + 62*a^2 - 133*a - 282) : 1), (1/150*(-11*a^5 + 40*a^4 -
+    49*a^3 - 4*a^2 + 261*a - 456) : 1/150*(-33*a^5 + 145*a^4 - 347*a^3 + 563*a^2
+    - 367*a - 243) : 1) ]
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/3*(a^2 - a);
+> y:=1/225*(-2*a^5 + 5*a^4 - 43*a^3 + 22*a^2 + 27*a -117);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/1050*(-66*a^5 + 115*a^4 + 156*a^3 - 199*a^2 -
+    384*a + 1239)*x*y + 1/7350*(173*a^5 + 380*a^4 - 1943*a^3 - 1178*a^2 + 3477*a
+    + 5508)*y = x^3 + 1/7350*(173*a^5 + 380*a^4 - 1943*a^3 - 1178*a^2 + 3477*a +
+    5508)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/3*(a^2 - a);
+> y:= 1/225*(2*a^5 - 5*a^4 + 43*a^3 - 97*a^2 + 48*a -108);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/1050*(66*a^5 - 215*a^4 + 44*a^3 + 299*a^2 +
+    184*a + 861)*x*y + 1/7350*(-173*a^5 + 1245*a^4 - 1307*a^3 - 2997*a^2 +
+    2323*a + 6417)*y = x^3 + 1/7350*(-173*a^5 + 1245*a^4 - 1307*a^3 - 2997*a^2 +
+    2323*a + 6417)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/150*(-11*a^5 + 40*a^4 - 49*a^3 - 4*a^2 + 261*a -456) ;
+> y:=1/150*(44*a^5 - 185*a^4 + 396*a^3 - 559*a^2 + 106*a + 549);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/1575*(-88*a^5 + 420*a^4 - 967*a^3 + 1443*a^2 -
+    787*a + 852)*x*y + 1/66150*(433*a^5 - 1245*a^4 + 2497*a^3 - 3963*a^2 -
+    1583*a + 12393)*y = x^3 + 1/66150*(433*a^5 - 1245*a^4 + 2497*a^3 - 3963*a^2
+    - 1583*a + 12393)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/150*(11*a^5 - 15*a^4 - a^3 - 21*a^2 - 211*a - 219);
+> y:= 1/150*(-44*a^5 + 35*a^4- 96*a^3 - 41*a^2 + 344*a + 351) ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/1575*(88*a^5 - 20*a^4 + 167*a^3 + 182*a^2 -
+    438*a + 873)*x*y + 1/66150*(-433*a^5 + 920*a^4 - 1847*a^3 + 388*a^2 + 4833*a
+    + 8532)*y = x^3 + 1/66150*(-433*a^5 + 920*a^4 - 1847*a^3 + 388*a^2 + 4833*a
+    + 8532)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/75*(4*a^5 - 10*a^4 +11*a^3 - 19*a^2 - 29*a + 9) ;
+> y:= 1/675*(-43*a^5 + 95*a^4 - 212*a^3 + 223*a^2 +243*a - 378);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/3150*(389*a^5 - 235*a^4 + 601*a^3 + 571*a^2 -
+    3189*a - 981)*x*y + 1/7350*(-886*a^5 + 1215*a^4 - 1324*a^3 + 1221*a^2 +
+    10286*a + 12969)*y = x^3 + 1/7350*(-886*a^5 + 1215*a^4 - 1324*a^3 + 1221*a^2
+    + 10286*a + 12969)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/75*(-4*a^5 + 10*a^4 - 11*a^3 - 6*a^2 + 54*a - 34);
+> y:=1/675*(43*a^5 - 120*a^4 + 262*a^3 - 273*a^2 - 218*a - 72);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/3150*(-389*a^5 + 1710*a^4 - 3551*a^3 +
+    4854*a^2 - 761*a - 2844)*x*y + 1/7350*(886*a^5 - 3215*a^4 + 5324*a^3 -
+    4321*a^2 - 9186*a + 23481)*y = x^3 + 1/7350*(886*a^5 - 3215*a^4 + 5324*a^3 -
+    4321*a^2 - 9186*a + 23481)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/6*(-a^4 + 2*a^3 + a^2 - 2*a - 3) ;
+> y:=1/150*(-21*a^5 + 65*a^4 + 11*a^3 - 119*a^2- 29*a + 9);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/525*(16*a^5 - 40*a^4 - 31*a^3 + 74*a^2 + 134*a
+    + 561)*x*y + 1/22050*(-73*a^5 + 220*a^4 + 43*a^3 - 472*a^2 + 1173*a +
+    2592)*y = x^3 + 1/22050*(-73*a^5 + 220*a^4 + 43*a^3 - 472*a^2 + 1173*a +
+    2592)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/6*(-a^4 + 2*a^3 + a^2 - 2*a - 3) ;
+> y:=1/150*(21*a^5 -40*a^4 - 61*a^3 + 94*a^2 + 79*a - 84);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/525*(-16*a^5 + 40*a^4 + 31*a^3 - 99*a^2 -
+    109*a + 714)*x*y + 1/22050*(73*a^5 - 145*a^4 - 193*a^3 + 247*a^2 - 873*a +
+    3483)*y = x^3 + 1/22050*(73*a^5 - 145*a^4 - 193*a^3 + 247*a^2 - 873*a +
+    3483)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/75*(-4*a^5 +10*a^4 - 11*a^3 - 6*a^2 + 54*a - 34) ;
+> y:=1/675*(-7*a^5 + 30*a^4 - 163*a^3 +327*a^2 - 268*a - 297);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/3150*(257*a^5 - 1230*a^4 + 2963*a^3 - 4902*a^2
+    + 3893*a + 4572)*x*y + 1/2450*(79*a^5 - 135*a^4 - 339*a^3 + 1731*a^2 -
+    4429*a + 5559)*y = x^3 + 1/2450*(79*a^5 - 135*a^4 - 339*a^3 + 1731*a^2 -
+    4429*a + 5559)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/75*(4*a^5 - 10*a^4 + 11*a^3 - 19*a^2 - 29*a+ 9);
+> y:=1/675*(7*a^5 - 5*a^4 + 113*a^3 - 52*a^2 + 18*a - 378);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/3150*(-257*a^5 + 55*a^4 - 613*a^3 - 823*a^2 +
+    657*a + 5553)*x*y + 1/2450*(-79*a^5 + 260*a^4 + 89*a^3 + 694*a^2 + 2129*a +
+    2466)*y = x^3 + 1/2450*(-79*a^5 + 260*a^4 + 89*a^3 + 694*a^2 + 2129*a +
+    2466)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/150*(11*a^5 - 15*a^4 - a^3 - 21*a^2 - 211*a - 219) ;
+> y:= 1/150*(33*a^5 -20*a^4 + 97*a^3 + 62*a^2 - 133*a - 282);
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/63*(-4*a^5 + 2*a^4 - 8*a^3 - 5*a^2 + 21*a +
+    117)*x*y + 1/66150*(262*a^5 - 605*a^4 + 1658*a^3 + 143*a^2 - 2412*a +
+    10827)*y = x^3 + 1/66150*(262*a^5 - 605*a^4 + 1658*a^3 + 143*a^2 - 2412*a +
+    10827)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> x:=1/150*(-11*a^5 + 40*a^4 -49*a^3 - 4*a^2 + 261*a - 456);
+> y:=1/150*(-33*a^5 + 145*a^4 - 347*a^3 + 563*a^2- 367*a - 243) ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/63*(4*a^5 - 18*a^4 + 40*a^3 - 57*a^2 + 25*a +
+    123)*x*y + 1/66150*(-262*a^5 + 705*a^4 - 1858*a^3 + 4107*a^2 - 1738*a +
+    9873)*y = x^3 + 1/66150*(-262*a^5 + 705*a^4 - 1858*a^3 + 4107*a^2 - 1738*a +
+    9873)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^6-3*x^5+4*x^4-3*x^3-8*x^2+9*x+27);
+> E1:=EllipticCurve([F |1/1050*(-66*a^5 + 115*a^4 + 156*a^3 - 199*a^2 -384*a +\
+ 1239), 1/7350*(173*a^5 + 380*a^4 - 1943*a^3 - 1178*a^2 + 3477*a+ 5508), 1/735\
+0*(173*a^5 + 380*a^4 - 1943*a^3 - 1178*a^2 + 3477*a + 5508), 0, 0]);
+> E2:=EllipticCurve([F | 1/1050*(66*a^5 - 215*a^4 + 44*a^3 + 299*a^2 +184*a + \
+861),1/7350*(-173*a^5 + 1245*a^4 - 1307*a^3 - 2997*a^2 +2323*a + 6417),1/7350*\
+(-173*a^5 + 1245*a^4 - 1307*a^3 - 2997*a^2 +2323*a + 6417),0,0]);
+> E3:=EllipticCurve([F |1/1575*(-88*a^5 + 420*a^4 - 967*a^3 + 1443*a^2 -787*a \
++ 852), 1/66150*(433*a^5 - 1245*a^4 + 2497*a^3 - 3963*a^2- 1583*a + 12393), 1/\
+66150*(433*a^5 - 1245*a^4 + 2497*a^3 - 3963*a^2- 1583*a + 12393),0,0]);
+> E4:=EllipticCurve([F |1/1575*(88*a^5 - 20*a^4 + 167*a^3 + 182*a^2 -438*a + 8\
+73),1/66150*(-433*a^5 + 920*a^4 - 1847*a^3 + 388*a^2 + 4833*a+ 8532),1/66150*(\
+-433*a^5 + 920*a^4 - 1847*a^3 + 388*a^2 + 4833*a+ 8532),0,0]);
+> E5:=EllipticCurve([F |1/3150*(389*a^5 - 235*a^4 + 601*a^3 + 571*a^2 -3189*a \
+- 981),1/7350*(-886*a^5 + 1215*a^4 - 1324*a^3 + 1221*a^2 +10286*a + 12969),1/7\
+350*(-886*a^5 + 1215*a^4 - 1324*a^3 + 1221*a^2 +10286*a + 12969),0,0]);
+> E6:=EllipticCurve([F |1/3150*(-389*a^5 + 1710*a^4 - 3551*a^3 +4854*a^2 - 761\
+*a - 2844),1/7350*(886*a^5 - 3215*a^4 + 5324*a^3 -4321*a^2 - 9186*a + 23481),1\
+/7350*(886*a^5 - 3215*a^4 + 5324*a^3 -4321*a^2 - 9186*a + 23481),0, 0]);
+> E7:=EllipticCurve([F |1/525*(16*a^5 - 40*a^4 - 31*a^3 + 74*a^2 + 134*a+ 561)\
+,1/22050*(-73*a^5 + 220*a^4 + 43*a^3 - 472*a^2 + 1173*a +2592),1/22050*(-73*a^\
+5 + 220*a^4 + 43*a^3 - 472*a^2 + 1173*a +2592), 0, 0]);
+> E8:=EllipticCurve([F |1/525*(-16*a^5 + 40*a^4 + 31*a^3 - 99*a^2 -109*a + 714\
+),1/22050*(73*a^5 - 145*a^4 - 193*a^3 + 247*a^2 - 873*a +3483),1/22050*(73*a^5\
+ - 145*a^4 - 193*a^3 + 247*a^2 - 873*a +3483), 0, 0]);
+> E9:=EllipticCurve([F |1/3150*(257*a^5 - 1230*a^4 + 2963*a^3 - 4902*a^2+ 3893\
+*a + 4572),1/2450*(79*a^5 - 135*a^4 - 339*a^3 + 1731*a^2 -4429*a + 5559),1/245\
+0*(79*a^5 - 135*a^4 - 339*a^3 + 1731*a^2 -4429*a + 5559), 0, 0]);
+> E10:=EllipticCurve([F |1/3150*(-257*a^5 + 55*a^4 - 613*a^3 - 823*a^2 +657*a \
++ 5553),1/2450*(-79*a^5 + 260*a^4 + 89*a^3 + 694*a^2 + 2129*a +2466),1/2450*(-\
+79*a^5 + 260*a^4 + 89*a^3 + 694*a^2 + 2129*a +2466), 0, 0]);
+> E11:=EllipticCurve([F |1/63*(-4*a^5 + 2*a^4 - 8*a^3 - 5*a^2 + 21*a +117),1/6\
+6150*(262*a^5 - 605*a^4 + 1658*a^3 + 143*a^2 - 2412*a +10827),1/66150*(262*a^5\
+ - 605*a^4 + 1658*a^3 + 143*a^2 - 2412*a +10827), 0, 0]);
+> E12:=EllipticCurve([F | 1/63*(4*a^5 - 18*a^4 + 40*a^3 - 57*a^2 + 25*a +123),\
+1/66150*(-262*a^5 + 705*a^4 - 1858*a^3 + 4107*a^2 - 1738*a +9873),1/66150*(-26\
+2*a^5 + 705*a^4 - 1858*a^3 + 4107*a^2 - 1738*a +9873), 0, 0]);
+>
+>
+> IsIsomorphic(E1,E2);
+false
+>
+> IsIsomorphic(E1,E3);
+false
+> IsIsomorphic(E2,E3);
+false
+>
+> IsIsomorphic(E1,E4);
+false
+> IsIsomorphic(E2,E4);
+false
+> IsIsomorphic(E3,E4);
+false
+>
+> IsIsomorphic(E1,E5);
+true
+> IsIsomorphic(E2,E5);
+false
+> IsIsomorphic(E3,E5);
+false
+> IsIsomorphic(E4,E5);
+false
+>
+>
+> IsIsomorphic(E1,E6);
+false
+> IsIsomorphic(E2,E6);
+true
+> IsIsomorphic(E3,E6);
+false
+> IsIsomorphic(E4,E6);
+false
+> IsIsomorphic(E5,E6);
+false
+>
+>
+> IsIsomorphic(E1,E7);
+false
+> IsIsomorphic(E2,E7);
+false
+> IsIsomorphic(E3,E7);
+true
+> IsIsomorphic(E4,E7);
+false
+> IsIsomorphic(E5,E7);
+false
+> IsIsomorphic(E6,E7);
+false
+>
+>
+> IsIsomorphic(E1,E8);
+false
+> IsIsomorphic(E2,E8);
+false
+> IsIsomorphic(E3,E8);
+false
+> IsIsomorphic(E4,E8);
+true
+> IsIsomorphic(E5,E8);
+false
+> IsIsomorphic(E6,E8);
+false
+> IsIsomorphic(E7,E8);
+false
+>
+>
+> IsIsomorphic(E1,E9);
+true
+> IsIsomorphic(E2,E9);
+false
+> IsIsomorphic(E3,E9);
+false
+> IsIsomorphic(E4,E9);
+false
+> IsIsomorphic(E5,E9);
+true
+> IsIsomorphic(E6,E9);
+false
+> IsIsomorphic(E7,E9);
+false
+> IsIsomorphic(E8,E9);
+false
+>
+>
+> IsIsomorphic(E1,E10);
+false
+> IsIsomorphic(E2,E10);
+true
+> IsIsomorphic(E3,E10);
+false
+> IsIsomorphic(E4,E10);
+false
+> IsIsomorphic(E5,E10);
+false
+> IsIsomorphic(E6,E10);
+true
+> IsIsomorphic(E7,E10);
+false
+> IsIsomorphic(E8,E10);
+false
+> IsIsomorphic(E9,E10);
+false
+>
+>
+> IsIsomorphic(E1,E11);
+false
+> IsIsomorphic(E2,E11);
+false
+> IsIsomorphic(E3,E11);
+true
+> IsIsomorphic(E4,E11);
+false
+> IsIsomorphic(E5,E11);
+false
+> IsIsomorphic(E6,E11);
+false
+> IsIsomorphic(E7,E11);
+true
+> IsIsomorphic(E8,E11);
+false
+> IsIsomorphic(E9,E11);
+false
+> IsIsomorphic(E10,E11);
+false
+>
+>
+> IsIsomorphic(E1,E12);
+false
+> IsIsomorphic(E2,E12);
+false
+> IsIsomorphic(E3,E12);
+false
+> IsIsomorphic(E4,E12);
+true
+> IsIsomorphic(E5,E12);
+false
+> IsIsomorphic(E6,E12);
+false
+> IsIsomorphic(E7,E12);
+false
+> IsIsomorphic(E8,E12);
+true
+> IsIsomorphic(E9,E12);
+false
+> IsIsomorphic(E10,E12);
+false
+> IsIsomorphic(E11,E12);
+false
+
+
