@@ -1,0 +1,233 @@
+In the following batch of codes for X_1(4,8): We first find points of X_1(4,8) over the given number field F. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (4,8). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field F.
+
+> R<x>:=PolynomialRing(Rationals());
+> f:=x^4+1;
+> F<a>:= NumberField(f);
+> E := EllipticCurve([F |0, 0, 0, -1, 0]);
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/4 + Z/4
+Defined on 2 generators
+Relations:
+    4*$.1 = 0
+    4*$.2 = 0
+Mapping from: Abelian Group isomorphic to Z/4 + Z/4
+Defined on 2 generators
+Relations:
+    4*$.1 = 0
+    4*$.2 = 0 to CrvEll: E given by a rule [no inverse]
+> Rank(E);
+0 true
+> G, h := TorsionSubgroup(E);
+> torsion_pts_E := [ h(g) : g in G ];
+> torsion_pts_E;
+[ (0 : 1 : 0), (a^3 - a - 1 : a^3 + 2*a^2 + a : 1), (-1 : 0 : 1), (a^3 - a - 1 :
+-a^3 - 2*a^2 - a : 1), (-a^2 : -a^2 - 1 : 1), (a^3 - a + 1 : -a^3 + a - 2 : 1),
+(a^2 : a^2 - 1 : 1), (-a^3 + a + 1 : -a^3 + a + 2 : 1), (0 : 0 : 1), (-a^3 + a -
+    1 : -a^3 + 2*a^2 - a : 1), (1 : 0 : 1), (-a^3 + a - 1 : a^3 - 2*a^2 + a :
+    1), (-a^2 : a^2 + 1 : 1), (-a^3 + a + 1 : a^3 - a - 2 : 1), (a^2 : -a^2 + 1
+: 1), (a^3 - a + 1 : a^3 - a + 2 : 1) ]
+
+
+
+
+
+> R<x> := PolynomialRing(Rationals());
+> F := NumberField(x^4+1);
+> L := CyclotomicField(4);
+> S:=IsSubfield(L, F);
+> S;
+true
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=a^3 - a - 1;
+> v:=  a^3 + 2*a^2 + a;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=a^3 - a - 1 ;
+> v:=-a^3 - 2*a^2 - a ;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=-a^2 ;
+> v:=-a^2 - 1;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=a^3 - a + 1;
+> v:= -a^3 + a - 2;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=a^2 ;
+> v:= a^2 - 1;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=-a^3 + a + 1 ;
+> v:=  -a^3 + a + 2;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=-a^3 + a -1 ;
+> v:= -a^3 + 2*a^2 - a;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=-a^3 + a - 1 ;
+> v:=  a^3 - 2*a^2 + a;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=-a^2 ;
+> v:= a^2 + 1;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=-a^3 + a + 1;
+> v:=  a^3 - a - 2;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=a^2 ;
+> v:=  -a^2 + 1;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^4+1);
+> u:=a^3 - a + 1;
+> v:= a^3 - a + 2;
+> x := (u-v-1)*(u-v+1)*(u+v-1)^2*(u^3+u^2-u*v^2-u-3*v^2-1)/(64*v^3*(u^2-u-v^2\
+));
+> t := -x*(u-v-1)*(u+v+1)/(4*v);
+> E:=EllipticCurve([F|1,-t,-t,0,0]);
+
+>> E:=EllipticCurve([F|1,-t,-t,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+
+
+
