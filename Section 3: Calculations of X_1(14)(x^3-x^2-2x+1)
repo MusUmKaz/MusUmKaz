@@ -61,3 +61,373 @@ Relations:
     14*a^2 - 8*a - 32 : 1), (0 : -1 : 1), (2*a^2 - 4*a + 1 : 4*a^2 - 10*a + 4 :
     1), (-a^2 + a + 2 : -a^2 + 2 : 1), (1 : -2 : 1), (a^2 - 1 : -a^2 - a : 1),
 (2*a^2 + 2*a - 1 : -8*a^2 - 6*a + 4 : 1) ]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=2*a^2 + 2*a - 1 ;
+> y:= 6*a^2 + 4*a - 4 ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/7*(4*a^2 + 9*a + 2)*x*y + 1/7*(-4*a^2 + 8*a -
+    3)*y = x^3 + 1/7*(-4*a^2 + 8*a - 3)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=a^2 - 1  ;
+> y:= a ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+
+>> r:= 1-(u+v)/((v+1)*(u+v+1));
+              ^
+Runtime error in '/': Argument 2 is not non-zero
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=-a^2 + a + 2 ;
+> y:=  2*a^2 - a - 5 ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/7*(5*a^2 - 8*a + 6)*x*y + 1/7*(7*a^2 - 15*a +
+    5)*y = x^3 + 1/7*(7*a^2 - 15*a + 5)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=2*a^2 - 4*a + 1 ;
+> y:= -6*a^2 + 14*a - 6;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+
+>> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=-4*a^2 + 2*a + 9;
+> y:= -10*a^2 + 6*a + 22;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/7*(-13*a^2 + 4*a + 32)*x*y + 1/7*(-4*a^2 - 4*a
+    + 1)*y = x^3 + 1/7*(-4*a^2 - 4*a + 1)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=-a + 1 ;
+> y:=a^2 -a - 1 ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+
+>> r:= 1-(u+v)/((v+1)*(u+v+1));
+              ^
+Runtime error in '/': Argument 2 is not non-zero
+
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=-a + 1 ;
+> y:=-a^2 + 2*a - 1 ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/7*(3*a^2 + 5*a + 5)*x*y + 1/7*(8*a^2 + 7*a -
+    4)*y = x^3 + 1/7*(8*a^2 + 7*a - 4)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=-4*a^2 + 2*a + 9 ;
+> y:=14*a^2 - 8*a - 32 ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+
+>> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=2*a^2 - 4*a + 1;
+> y:= 4*a^2 - 10*a + 4 ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/7*(9*a^2 - 13*a + 1)*x*y + 1/7*(8*a^2 - 4*a -
+    19)*y = x^3 + 1/7*(8*a^2 - 4*a - 19)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=-a^2 + a + 2 ;
+> y:=-a^2 + 2;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+
+>> r:= 1-(u+v)/((v+1)*(u+v+1));
+              ^
+Runtime error in '/': Argument 2 is not non-zero
+
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=a^2 - 1 ;
+> y:=-a^2 - a ;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+> E;
+Elliptic Curve defined by y^2 + 1/7*(-8*a^2 + 3*a + 24)*x*y + 1/7*(-15*a^2 + 8*a
+    + 34)*y = x^3 + 1/7*(-15*a^2 + 8*a + 34)*x^2 over F
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/14
+Defined on 1 generator
+Relations:
+    14*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> x:=2*a^2 +2*a - 1 ;
+> y:=-8*a^2 - 6*a + 4;
+> X:=x;
+> Y:=y+1;
+> z:=1;
+> U:=-X^2 - X*Y + X*z;
+> V:=X*z + Y*z - z^2;
+> W:=X^2;
+> u:=U/W;
+> v:=V/W;
+> r:= 1-(u+v)/((v+1)*(u+v+1));
+> s:=(1-u)/(v+1);
+> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+
+>> E:=EllipticCurve([F|s-r*s+1,r*s-r^2*s,r*s-r^2*s,0,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^3-x^2-2*x+1);
+> E1:=EllipticCurve([F |1/7*(4*a^2 + 9*a + 2),1/7*(-4*a^2 + 8*a - 3),1/7*(-4*a\
+^2 + 8*a - 3), 0, 0]);
+> E2:=EllipticCurve([F |1/7*(5*a^2 - 8*a + 6),1/7*(7*a^2 - 15*a + 5),1/7*(7*a^\
+2 - 15*a + 5),0,0]);
+> E3:=EllipticCurve([F | 1/7*(-13*a^2 + 4*a + 32),1/7*(-4*a^2 - 4*a + 1),1/7*(\
+-4*a^2 - 4*a + 1),0,0]);
+> E4:=EllipticCurve([F |1/7*(3*a^2 + 5*a + 5),1/7*(8*a^2 + 7*a - 4),1/7*(8*a^2\
+ + 7*a - 4),0,0]);
+> E5:=EllipticCurve([F |1/7*(9*a^2 - 13*a + 1),1/7*(8*a^2 - 4*a - 19),1/7*(8*a\
+^2 - 4*a - 19),0,0]);
+> E6:=EllipticCurve([F | 1/7*(-8*a^2 + 3*a + 24),1/7*(-15*a^2 + 8*a + 34),1/7*\
+(-15*a^2 + 8*a + 34),0, 0]);
+>
+>
+
+>
+>
+> IsIsomorphic(E1,E2);
+false
+>
+> IsIsomorphic(E1,E3);
+true
+> IsIsomorphic(E2,E3);
+false
+>
+> IsIsomorphic(E1,E4);
+false
+> IsIsomorphic(E2,E4);
+true
+> IsIsomorphic(E3,E4);
+false
+>
+> IsIsomorphic(E1,E5);
+true
+> IsIsomorphic(E2,E5);
+false
+> IsIsomorphic(E3,E5);
+true
+> IsIsomorphic(E4,E5);
+false
+>
+>
+> IsIsomorphic(E1,E6);
+false
+> IsIsomorphic(E2,E6);
+true
+> IsIsomorphic(E3,E6);
+false
+> IsIsomorphic(E4,E6);
+true
+> IsIsomorphic(E5,E6);
+false
+
+
+
+
