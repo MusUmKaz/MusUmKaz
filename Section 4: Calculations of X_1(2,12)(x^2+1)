@@ -1,0 +1,85 @@
+In the following batch of codes for X_1(2,12): We first find points of X_1(2,12) over the given number field F. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (2,12). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field F.
+
+
+> R<x>:=PolynomialRing(Rationals());
+> f:=x^2+1;
+> F<a>:= NumberField(f);
+> E := EllipticCurve([F |0, -1, 0, 1, 0]);
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/8
+Defined on 1 generator
+Relations:
+    8*$.1 = 0
+Mapping from: Abelian Group isomorphic to Z/8
+Defined on 1 generator
+Relations:
+    8*$.1 = 0 to CrvEll: E given by a rule [no inverse]
+> Rank(E);
+0 true
+> G, h := TorsionSubgroup(E);
+> torsion_pts_E := [ h(g) : g in G ];
+> torsion_pts_E;
+[ (0 : 1 : 0), (-a : -1 : 1), (1 : -1 : 1), (a : 1 : 1), (0 : 0 : 1), (a : -1 :
+1), (1 : 1 : 1), (-a : 1 : 1) ]
+
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2+1);
+> u:=-a   ;
+> v:=- 1;
+> q := v;
+> t := 4*v/(u*v^2-u-3*v^2-1);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2+1);
+> u:=a   ;
+> v:=1;
+> q := v;
+> t := 4*v/(u*v^2-u-3*v^2-1);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2+1);
+> u:=a   ;
+> v:=-1;
+> q := v;
+> t := 4*v/(u*v^2-u-3*v^2-1);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2+1);
+> u:=-a   ;
+> v:=1;
+> q := v;
+> t := 4*v/(u*v^2-u-3*v^2-1);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
