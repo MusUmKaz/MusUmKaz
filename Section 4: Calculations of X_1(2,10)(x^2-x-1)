@@ -1,0 +1,126 @@
+In the following batch of codes for X_1(2,10): We first find points of X_1(2,10) over the given number field F. In the case that the points obtained are not defined over the rational field Q, we check if the points generate an elliptic curve with torsion (2,10). Lastly we check isomorphism between the elliptic curves obtained from the points over the number field F.
+
+
+
+> R<x>:=PolynomialRing(Rationals());
+> f:=x^2-x-1;
+> F<a>:= NumberField(f);
+> E := EllipticCurve([F |0, 1, 0, -1, 0]);
+> TorsionSubgroup(E);
+Abelian Group isomorphic to Z/2 + Z/6
+Defined on 2 generators
+Relations:
+    2*$.1 = 0
+    6*$.2 = 0
+Mapping from: Abelian Group isomorphic to Z/2 + Z/6
+Defined on 2 generators
+Relations:
+    2*$.1 = 0
+    6*$.2 = 0 to CrvEll: E given by a rule [no inverse]
+> Rank(E);
+0 true
+> G, h := TorsionSubgroup(E);
+> torsion_pts_E := [ h(g) : g in G ];
+> torsion_pts_E;
+[ (0 : 1 : 0), (-a : 0 : 1), (-1 : -1 : 1), (2*a + 1 : 4*a + 3 : 1), (1 : 1 :
+    1), (-2*a + 3 : 4*a - 7 : 1), (0 : 0 : 1), (a - 1 : 0 : 1), (1 : -1 : 1),
+(-2*a + 3 : -4*a + 7 : 1), (-1 : 1 : 1), (2*a + 1 : -4*a - 3 : 1) ]
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2-x-1);
+> u:=-a;
+> v:= 0;
+> q := u/v;
+
+>> q := u/v;
+         ^
+Runtime error in '/': Argument 2 is not non-zero
+
+> t := 4*u*v/(u*v^2-u^3-3*u^2-v^2);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                               ^
+User error: Identifier 'q' has not been declared or assigned
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2-x-1);
+> u:=2*a + 1 ;
+> v:=4*a + 3;
+> q := u/v;
+> t := 4*u*v/(u*v^2-u^3-3*u^2-v^2);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2-x-1);
+> u:=-2*a + 3;
+> v:= 4*a - 7;
+> q := u/v;
+> t := 4*u*v/(u*v^2-u^3-3*u^2-v^2);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2-x-1);
+> u:=a - 1;
+> v:= 0;
+> q := u/v;
+
+>> q := u/v;
+         ^
+Runtime error in '/': Argument 2 is not non-zero
+
+> t := 4*u*v/(u*v^2-u^3-3*u^2-v^2);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2-x-1);
+> u:=-2*a + 3 ;
+> v:= -4*a + 7 ;
+> q := u/v;
+> t := 4*u*v/(u*v^2-u^3-3*u^2-v^2);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+> K<x>:=PolynomialRing(Rationals());
+> F<a>:=NumberField(x^2-x-1);
+> u:=2*a + 1;
+> v:= -4*a - 3 ;
+> q := u/v;
+> t := 4*u*v/(u*v^2-u^3-3*u^2-v^2);
+> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+
+>> E:=EllipticCurve([F|0,t^2-2*q*t-2,0,-(t^2-1)*(q*t+1)^2,0]);
+                   ^
+Runtime error in 'EllipticCurve': Curve is singular
+
+
+
+
