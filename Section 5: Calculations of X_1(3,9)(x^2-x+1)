@@ -75,6 +75,13 @@ Relations:
 [ (0 : 1 : 0), (-1 : -a : 1), (-1 : a - 1 : 1), (0 : 0 : 1), (a : -a : 1), (-a +
     1 : a - 1 : 1), (0 : -1 : 1), (-a + 1 : -a : 1), (a : a - 1 : 1) ]
 
+> R<x> := PolynomialRing(Rationals());
+> K := NumberField(x^2-x+1);
+> L := CyclotomicField(3);
+> S:=IsSubfield(L, K);
+> S;
+true
+
 
 
 > K<x>:=PolynomialRing(Rationals());
