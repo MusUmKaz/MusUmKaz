@@ -73,137 +73,13 @@ Relations:
 : 1 : 1) ]
 
 > R<x> := PolynomialRing(Rationals());
-> K := NumberField(x^3-2);
+> F := NumberField(x^3-2);
 > L := CyclotomicField(3);
 > S:=IsSubfield(L, K);
 > S;
 false
 
-
-
-
-
-
-> K<x>:=PolynomialRing(Rationals());
-> F<a>:=NumberField(x^3-2);
-> k:=a ;
-> l:=-2;
-> x:=9*k + 9 ;
-> y:= 27*l + 54 ;
-> z:=1;
-> U:=1/9*x^3*y^3 - 45/2*x^3*y^2*z - 8/3*x^2*y^3*z - 1/9*y^5*z + 648*x^3*y*z^2 \
-+ 567*x^2*y^2*z^2 + 27*x*y^3*z^2 + 63/2*y^4*z^2 - 13851*x^2*y*z^3 - 11421/2*x*\
-y^2*z^3 -5427/2*y^3*z^3 - 118098*x^2*z^4 + 373977/2*x*y*z^4 + 91854*y^2*z^4 - \
-531441/2*x*z^5 - 1062882*y*z^5;
-> V:=-162*x^2*y^2*z^2 - 27*x*y^3*z^2 - 4*y^4*z^2 +13122*x^2*y*z^3 + 9477/2*x*y\
-^2*z^3 + 324*y^3*z^3 -236196*x^2*z^4 - 216513*x*y*z^4 - 10935*y^2*z^4 +2657205\
-*x*z^5 + 14348907/2*z^6;
-> W:=y^4*z^2 - 405/2*y^3*z^3 - 59049/2*x*y*z^4 + 45927/2*y^2*z^4 +1062882*x*z^\
-5 - 708588*y*z^5 + 4782969/2*z^6;
-> u:=U/W;
-> v:=V/W;
-> t := (u+1)/(u+2);
-> E:=EllipticCurve([F|-(t^3-t^2-1),-t^2*(t-1)*(t^2-t+1),-t^2*(t-1)*(t^2-t+1),0\
-,0]);
-> E;
-Elliptic Curve defined by y^2 + (-19*a^2 - 24*a - 29)*x*y + (-373*a^2 - 470*a -
-    592)*y = x^3 + (-373*a^2 - 470*a - 592)*x^2 over F
-> TorsionSubgroup(E);
-Abelian Group isomorphic to Z/9
-Defined on 1 generator
-Relations:
-    9*$.1 = 0
-Mapping from: Abelian Group isomorphic to Z/9
-Defined on 1 generator
-Relations:
-    9*$.1 = 0 to CrvEll: E given by a rule [no inverse]
-
-
-
-
-> K<x>:=PolynomialRing(Rationals());
-> F<a>:=NumberField(x^3-2);
-> k:=-1/2*a ;
-> l:= -1/2;
-> x:=9*k + 9 ;
-> y:= 27*l + 54 ;
-> z:=1;
-> U:=1/9*x^3*y^3 - 45/2*x^3*y^2*z - 8/3*x^2*y^3*z - 1/9*y^5*z + 648*x^3*y*z^2 \
-+ 567*x^2*y^2*z^2 + 27*x*y^3*z^2 + 63/2*y^4*z^2 - 13851*x^2*y*z^3 - 11421/2*x*\
-y^2*z^3 -5427/2*y^3*z^3 - 118098*x^2*z^4 + 373977/2*x*y*z^4 + 91854*y^2*z^4 - \
-531441/2*x*z^5 - 1062882*y*z^5;
-> V:=-162*x^2*y^2*z^2 - 27*x*y^3*z^2 - 4*y^4*z^2 +13122*x^2*y*z^3 + 9477/2*x*y\
-^2*z^3 + 324*y^3*z^3 -236196*x^2*z^4 - 216513*x*y*z^4 - 10935*y^2*z^4 +2657205\
-*x*z^5 + 14348907/2*z^6;
-> W:=y^4*z^2 - 405/2*y^3*z^3 - 59049/2*x*y*z^4 + 45927/2*y^2*z^4 +1062882*x*z^\
-5 - 708588*y*z^5 + 4782969/2*z^6;
-> u:=U/W;
-> v:=V/W;
-> t := (u+1)/(u+2);
-> E:=EllipticCurve([F|-(t^3-t^2-1),-t^2*(t-1)*(t^2-t+1),-t^2*(t-1)*(t^2-t+1),0\
-,0]);
-> E;
-Elliptic Curve defined by y^2 + (-2*a^2 + a + 3)*x*y + (-a^2 - 5*a + 8)*y = x^3
-+ (-a^2 - 5*a + 8)*x^2 over F
-> TorsionSubgroup(E);
-Abelian Group isomorphic to Z/9
-Defined on 1 generator
-Relations:
-    9*$.1 = 0
-Mapping from: Abelian Group isomorphic to Z/9
-Defined on 1 generator
-Relations:
-    9*$.1 = 0 to CrvEll: E given by a rule [no inverse]
-
-
-
-
-
-
-
-
-> K<x>:=PolynomialRing(Rationals());
-> F<a>:=NumberField(x^3-2);
-> k:=a ;
-> l:=1;
-> x:=9*k + 9 ;
-> y:= 27*l + 54 ;
-> z:=1;
-> U:=1/9*x^3*y^3 - 45/2*x^3*y^2*z - 8/3*x^2*y^3*z - 1/9*y^5*z + 648*x^3*y*z^2 \
-+ 567*x^2*y^2*z^2 + 27*x*y^3*z^2 + 63/2*y^4*z^2 - 13851*x^2*y*z^3 - 11421/2*x*\
-y^2*z^3 -5427/2*y^3*z^3 - 118098*x^2*z^4 + 373977/2*x*y*z^4 + 91854*y^2*z^4 - \
-531441/2*x*z^5 - 1062882*y*z^5;
-> V:=-162*x^2*y^2*z^2 - 27*x*y^3*z^2 - 4*y^4*z^2 +13122*x^2*y*z^3 + 9477/2*x*y\
-^2*z^3 + 324*y^3*z^3 -236196*x^2*z^4 - 216513*x*y*z^4 - 10935*y^2*z^4 +2657205\
-*x*z^5 + 14348907/2*z^6;
-> W:=y^4*z^2 - 405/2*y^3*z^3 - 59049/2*x*y*z^4 + 45927/2*y^2*z^4 +1062882*x*z^\
-5 - 708588*y*z^5 + 4782969/2*z^6;
-> u:=U/W;
-> v:=V/W;
-> t := (u+1)/(u+2);
-> E:=EllipticCurve([F|-(t^3-t^2-1),-t^2*(t-1)*(t^2-t+1),-t^2*(t-1)*(t^2-t+1),0\
-,0]);
-> E;
-Elliptic Curve defined by y^2 + 1/2*(a + 1)*x*y + 1/4*(2*a^2 + a - 4)*y = x^3 +
-1/4*(2*a^2 + a - 4)*x^2 over F
-> TorsionSubgroup(E);
-Abelian Group isomorphic to Z/9
-Defined on 1 generator
-Relations:
-    9*$.1 = 0
-Mapping from: Abelian Group isomorphic to Z/9
-Defined on 1 generator
-Relations:
-    9*$.1 = 0 to CrvEll: E given by a rule [no inverse]
-
-
-
-
-
-
-
-
-
+Since F does not contain CyclotomicField(3), points cannot generate an elliptic curve with desired torsion.  
 
 
 
